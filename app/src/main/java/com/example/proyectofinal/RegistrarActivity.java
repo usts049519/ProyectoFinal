@@ -87,20 +87,22 @@ public class RegistrarActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
 
-                    Map<String, Object> map = new HashMap<>();
-                    map.put("Nombre",Nombre);
-                    map.put("Email", Email);
-                    map.put("Password", Password);
+                    Map<String, Object> datos = new HashMap<>();
+                    datos.put("Nombre",Nombre);
+                    datos.put("Email", Email);
+                    datos.put("Password", Password);
 
                     String id = firebaseAuth.getCurrentUser().getUid();
 
-                    database.child("Users").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    Toast.makeText(RegistrarActivity.this,"Te has registrado  exitosamente", Toast.LENGTH_SHORT).show();
+
+                    database.child("Users").child(id).push().setValue(datos).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task2) {
                             if (task2.isSuccessful()){
                                 Toast.makeText(RegistrarActivity.this,"Tus datos se guardaron exitosamente", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(RegistrarActivity.this, MainActivity.class));
-                                //finish();
+                                finish();
                             }else {
                                 Toast.makeText(RegistrarActivity.this,"Tus datos no se enviaron correctamente", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(RegistrarActivity.this, MainActivity.class));
@@ -114,5 +116,4 @@ public class RegistrarActivity extends AppCompatActivity {
             }
         });
     }
-
 }

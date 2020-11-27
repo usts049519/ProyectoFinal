@@ -7,4 +7,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="BottomNavigation">
+        <item name="android:background">@color/navegation</item>
+        <item name="itemIconTint">@color/navegationPage</item>
+        <item name="itemTextColor">@color/navegationPage2</item>
+    </style>
 </resources>
