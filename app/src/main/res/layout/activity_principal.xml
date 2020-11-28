@@ -25,6 +25,18 @@
         android:layout_centerHorizontal="true"
         android:layout_height="45dp"/>
 
+    <Button
+        android:id="@+id/btnPrueba"
+        android:text="Prueba de notificacion"
+        android:textAllCaps="false"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/btnCerrar"
+        android:textColor="@color/textColorLight"
+        android:background="@drawable/buttom"
+        android:layout_width="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="45dp"/>
+
     <FrameLayout
         android:id="@+id/navegacion"
         android:layout_width="match_parent"

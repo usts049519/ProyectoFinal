@@ -13,7 +13,7 @@ import java.time.chrono.MinguoChronology;
 
 public class PrincipalActivity extends AppCompatActivity {
 
-    private Button btnCerrar;
+    private Button btnCerrar, btnPruebaNoti;
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -24,6 +24,14 @@ public class PrincipalActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
         btnCerrar = (Button) findViewById(R.id.btnCerrar);
+        btnPruebaNoti = (Button) findViewById(R.id.btnPrueba);
+
+        btnPruebaNoti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(PrincipalActivity.this, PruebaNotificacionActivity.class));
+            }
+        });
 
         btnCerrar.setOnClickListener(new View.OnClickListener() {
             @Override

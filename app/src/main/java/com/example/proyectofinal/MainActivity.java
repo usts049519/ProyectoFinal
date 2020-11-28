@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    startActivity(new Intent(MainActivity.this, PrincipalActivity.class));
+                    startActivity(new Intent(MainActivity.this, PruebaNotificacionActivity.class));
                     finish();
                 }else {
                     Toast.makeText(MainActivity.this, "Datos incorrectos", Toast.LENGTH_SHORT).show();
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if (firebaseAuth.getCurrentUser() != null){
-            startActivity(new Intent(MainActivity.this, PrincipalActivity.class));
+            startActivity(new Intent(MainActivity.this, PruebaNotificacionActivity.class));
             finish();
         }
     }
