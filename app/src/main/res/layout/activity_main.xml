@@ -47,7 +47,7 @@
             android:backgroundTint="@color/colorWhite"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorWhite"
-            android:inputType="textEmailAddress"
+            android:inputType="text"
             android:hint="  Email" />
         <View
             android:layout_width="match_parent"
@@ -88,16 +88,6 @@
             android:textAllCaps="false"
             android:textColor="@color/textColorLight"
             android:background="@drawable/buttom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <Button
-            android:id="@+id/btnIniciarGoogle"
-            android:text="Inicia con Google"
-            android:textAllCaps="false"
-            android:textColor="@color/colorPrimary"
-            android:background="@color/colorWhite"
-            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>

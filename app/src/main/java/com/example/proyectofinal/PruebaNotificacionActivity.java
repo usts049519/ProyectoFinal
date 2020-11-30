@@ -17,6 +17,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 
@@ -42,12 +43,12 @@ public class PruebaNotificacionActivity extends AppCompatActivity {
         txtTitu = (EditText) findViewById(R.id.txtTitulo);
         txtDet = (EditText) findViewById(R.id.txtDetalle);
 
-        btnPrueba = (Button) findViewById(R.id.btnNotificationPush);
-        btnVolver = (Button) findViewById(R.id.btnVolverPush);
+        btnPrueba = (Button) findViewById(R.id.btnNotificatiPush);
 
-        btnVolver.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton btnAgregarNuevaComputadora = findViewById(R.id.btnVolverPrin);
+        btnAgregarNuevaComputadora.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 startActivity(new Intent(PruebaNotificacionActivity.this, PrincipalActivity.class));
                 finish();
             }
@@ -60,6 +61,9 @@ public class PruebaNotificacionActivity extends AppCompatActivity {
                 txtTitulo = txtTitu.getText().toString();
                 txtDetalle = txtDet.getText().toString();
                 notificar();
+
+                txtTitu.setText("");
+                txtDet.setText("");
             }
 
 

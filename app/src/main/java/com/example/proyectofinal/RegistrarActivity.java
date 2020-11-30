@@ -106,6 +106,7 @@ public class RegistrarActivity extends AppCompatActivity {
                             }else {
                                 Toast.makeText(RegistrarActivity.this,"Tus datos no se enviaron correctamente", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(RegistrarActivity.this, MainActivity.class));
+                                finish();
                             }
                         }
                     });
