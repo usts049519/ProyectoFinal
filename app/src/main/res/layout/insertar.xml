@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linerInsertar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/fondo"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:text="Insertar Producto"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textSize="25sp"/>
+        <EditText
+            android:id="@+id/txtDescrip"
+            android:layout_width="match_parent"
+            android:hint="Descripcion"
+            android:layout_marginTop="8dp"
+            android:inputType="text"
+            android:backgroundTint="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:textColor="@color/colorWhite"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/txtPrecioo"
+            android:hint="Precio"
+            android:inputType="numberDecimal"
+            android:backgroundTint="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:textColor="@color/colorWhite"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/insertar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@drawable/buttom"
+            android:textColor="@color/colorWhite"
+            android:textAllCaps="false"
+            android:text="Insetar datos"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

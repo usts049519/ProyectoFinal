@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/cerrar"
-        android:title="Cerrar sesion"
+        android:id="@+id/menu_agregar"
+        android:icon="@drawable/ic_agregar"
+        app:showAsAction="always"
+        android:iconTint="@color/guardar"
+        android:title="Agregar" />
+    <item
+        android:id="@+id/menu_modificar"
+        android:icon="@drawable/ic_modificar"
+        android:iconTint="@color/modificar"
+        android:title="Modificar"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/menu_eliminar"
+        android:title="Eliminar"
+        android:icon="@drawable/ic_eliminar"
+        android:iconTint="@color/eliminar"
+        app:showAsAction="always"
         />
 </menu>

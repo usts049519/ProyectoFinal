@@ -16,8 +16,8 @@
     <color name="colorWhite">#ffffff</color>
     <color name="colorTransparenteWhite">#e0e0e0</color>
 
-    <color name="navegation">#062925</color>
-    <color name="navegationPage">#044a42</color>
-    <color name="navegationPage2">#3a9188</color>
+    <color name="guardar">#0080ff</color>
+    <color name="modificar">#00ff80</color>
+    <color name="eliminar">#ff0000</color>
     <color name="navegationPage3">#b8e1dd</color>
 </resources>
