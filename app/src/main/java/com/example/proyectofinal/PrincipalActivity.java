@@ -110,8 +110,6 @@ public class PrincipalActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
 
     public  void insertarDataFirebase(){
@@ -121,7 +119,7 @@ public class PrincipalActivity extends AppCompatActivity {
     }
 
     public void listarProducto(){
-        databaseReference.child("Productos").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Productos").orderByChild("timeOrder").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listProductos.clear();
@@ -132,11 +130,7 @@ public class PrincipalActivity extends AppCompatActivity {
 
                 //inicia el adaptador
                 ListViewProductoAdapter = new listViewProductoAdapter(PrincipalActivity.this, listProductos);
-                /*arrayAdapterProducto = new ArrayAdapter<Producto>(
-                        PrincipalActivity.this,
-                        android.R.layout.simple_list_item_1,
-                        listProductos
-                );*/
+
                 listViewProducto.setAdapter(ListViewProductoAdapter);
             }
 
@@ -161,12 +155,51 @@ public class PrincipalActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.menu_agregar:
                 insertar();
+                break;
+            case R.id.menu_modificar:
+                if (productoSeleccionado != null){
+                    if (validarInputs()==false){
+                        Producto p = new Producto();
+                        p.setIdProducto(productoSeleccionado.getIdProducto());
+                        p.setDescripction(descripcion);
+                        p.setPrecio(precio);
+                        p.setFechaRegistro(productoSeleccionado.getFechaRegistro());
+                        p.setTimeOrder(productoSeleccionado.getTimeOrder());
+
+                        databaseReference.child("Productos").child(p.getIdProducto()).setValue(p);
+                        Toast.makeText(PrincipalActivity.this, "Registro Exitoso", Toast.LENGTH_SHORT).show();
+                        description.setText("");
+                        preci.setText("");
+                        linearEditar.setVisibility(View.GONE);
+                        productoSeleccionado = null;
+                    }
+                }else{
+                    Toast.makeText(PrincipalActivity.this, "Seleccione un producto", Toast.LENGTH_SHORT).show();
+                }
+
+                break;
+            case R.id.menu_eliminar:
+                if (productoSeleccionado != null){
+                    Producto pro = new Producto();
+                    pro.setIdProducto(productoSeleccionado.getIdProducto());
+
+                    databaseReference.child("Productos").child(pro.getIdProducto()).removeValue();
+                    Toast.makeText(PrincipalActivity.this, "Registro eliminado exitosamente", Toast.LENGTH_SHORT).show();
+                    description.setText("");
+                    preci.setText("");
+                    linearEditar.setVisibility(View.GONE);
+                    productoSeleccionado = null;
+                    Toast.makeText(PrincipalActivity.this, "Eliminado correctamente", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(PrincipalActivity.this, "Seleccione un producto para eliminar", Toast.LENGTH_SHORT).show();
+                }
+                break;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    public  void insertar(){
+    public void insertar(){
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(
                 PrincipalActivity.this
         );
@@ -204,6 +237,8 @@ public class PrincipalActivity extends AppCompatActivity {
                     Toast.makeText(PrincipalActivity.this, "Registro Exitoso", Toast.LENGTH_SHORT).show();
                     txtdescr.setText("");
                     txtPrec.setText("");
+
+                    dialog.dismiss();
                 }
             }
         });
@@ -211,7 +246,7 @@ public class PrincipalActivity extends AppCompatActivity {
 
     public void showError(EditText input, String s){
         input.requestFocus();
-        input.setText(s);
+        input.setError(s);
     }
 
     public String getFechaNormal(long getFechaMilisegundos){
@@ -225,6 +260,23 @@ public class PrincipalActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         long tiempo = calendar.getTimeInMillis();
         return tiempo;
+    }
+
+
+    public boolean validarInputs() {
+
+        String descripcion = description.getText().toString();
+        String precio = preci.getText().toString();
+
+        if (descripcion.isEmpty() || descripcion.length() < 3) {
+            showError(description, "Descripcion no es validad 'Min. 3 letras '");
+            return true;
+        } else if (precio.isEmpty() || precio.length() < 1) {
+            showError(preci, "Precio no es validad 'Min. 1 numero '");
+            return true;
+        }else   {
+            return false;
+        }
     }
 
 }
